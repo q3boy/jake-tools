@@ -1,0 +1,56 @@
+// open
+!!!5
+- name = typeof name === 'undefined' ? '在云端前端框架' : name;
+include data.jade
+- start = new Date(data.stats.start)
+- end = new Date(data.stats.end)
+- pad = function(num) {return num > 9 ? num.toString() : '0' + num}
+- per = function(num) {return (Math.round(num * 100) / 100) + '%'}
+
+html
+	<!-- COVERAGE-META-FOR-TOAST: HITS:#{data.hits} SLOC:#{data.sloc} COVER:#{Math.round(data.coverage)} -->
+	head
+		title #{name} Test &amp; Code Coverage Report
+		meta(charset="utf-8")
+		// css
+		include syntax_style.jade
+		include stylus.jade
+		// js lib
+		include jquery.jade
+		include highlight.jade
+		// coffee
+		:coffeescript
+			hljs.initHighlightingOnLoad()
+			$(document).ready ->
+				//- console.log 123
+	body
+		h1 #{name} Test &amp; Code Coverage Report
+		section#summary
+			h2 Summary Info
+			p start at #{pad(start.getHours())}:#{pad(start.getMinutes())}:#{pad(start.getSeconds())},
+				| end at #{pad(end.getHours())}:#{pad(end.getMinutes())}:#{pad(end.getSeconds())}, duration #{data.stats.duration} ms.
+			p totally #{data.stats.tests} cases, #{data.stats.passes} passed, #{data.stats.failures} failed.
+			p coverage #{per(data.coverage)}, with #{data.files.length} files.
+		section#test
+			h2 Test Report
+			ul#failure
+				h3 Test case failed.
+				each test in data.failures
+					li #{test.fullTitle} (duration: #{test.duration}ms)
+			ul#passed
+				h3 Test case passed.
+				each test in data.passes
+					li #{test.fullTitle} (duration: #{test.duration}ms)
+		section#coverage
+			h2 Coverage report
+			each file in data.files
+				details
+					summary #{file.filename} #{per(file.coverage)}
+					pre
+						code
+							ol
+								each line in file.source
+									if line.coverage > 0 || line.coverage === ''
+										li #{line.source}
+									else
+										li.no #{line.source}

@@ -1,0 +1,30 @@
+:stylus
+	vendor(prop, args)
+		-webkit-{prop} args
+		-moz-{prop} args
+		{prop} args
+
+	border-radius()
+		vendor('border-radius', arguments)
+
+
+	body
+		font-family Arial, sans-serif
+		// border 1px solid black
+		// border-radius 4px
+		padding 10
+
+	h1
+		padding 10px
+
+	footer
+		font-size 12px
+		text-align
+	code
+		font-family 'Yahei Mono', 'Monaco', 'mono'
+		font-size 14px
+	code li
+		background-color: hsl(120, 80%, 95%)
+	code li.no
+		background-color: hsl(0, 80%, 95%)
+
