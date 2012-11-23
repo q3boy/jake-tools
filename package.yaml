@@ -1,6 +1,6 @@
 name: jake-tools
 main: index.js
-version: 0.0.9
+version: 0.0.10
 description: 辅助快速编写 Jakefiles
 author:
   name: 清笃
