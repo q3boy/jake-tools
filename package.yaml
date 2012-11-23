@@ -1,20 +1,20 @@
 name: jake-tools
 main: index.js
 version: 0.0.10
-description: 辅助快速编写 Jakefiles
+description: a collection of some useful functions for using Jake
 author:
-  name: 清笃
-  email: qingdu@alibaba-inc.com
+  name: q3boy
+  email: q3boy1@gmail.com
 engines:
   node: >=0.6.0
 os:
   - !win32
-homepage: http://gitlab.taobao.ali.com/jaketools
+homepage: https://github.com/q3boy/jake-tools
 repository:
   type: git
-  url: git@gitlab.alibaba-inc.com:jaketools.git
+  url: git://github.com/q3boy/jake-tools.git
 bugs:
-  url: http://gitlab.taobao.ali.com/jaketools/issues
+  url: https://github.com/q3boy/jake-tools/issues
 dependencies:
   stylus: >=0.29.0
   glob: >=3.1.0
